@@ -57,6 +57,7 @@
             this.TxtTile.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TxtTile.Size = new System.Drawing.Size(302, 30);
             this.TxtTile.TabIndex = 0;
+            this.TxtTile.Text = "0";
             // 
             // BtnSeven
             // 
@@ -248,7 +249,9 @@
             this.Controls.Add(this.BtnEight);
             this.Controls.Add(this.BtnSeven);
             this.Controls.Add(this.TxtTile);
+            this.MaximizeBox = false;
             this.Name = "Calculator";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
             this.ResumeLayout(false);
             this.PerformLayout();
