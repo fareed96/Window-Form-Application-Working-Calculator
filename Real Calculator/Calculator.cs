@@ -13,7 +13,7 @@ namespace Real_Calculator
     public partial class Calculator : Form
     {
         double FirstStep, SecondStep, Result;
-        enum TOperation {add, subtract, multiply, divide};
+        enum TOperation { Add, Subtract, Multiply, Divide };
         TOperation Operation;
         public Calculator()
         {
@@ -22,151 +22,138 @@ namespace Real_Calculator
 
         private void BtnOne_Click(object sender, EventArgs e)
         {
-            if (TxtTile.Text == "0")
-                TxtTile.Text = "1";
-            else
-                TxtTile.Text += "1"; 
+            WriteNumber("1");
         }
 
         private void BtnTwo_Click(object sender, EventArgs e)
         {
-            if (TxtTile.Text == "0")
-                TxtTile.Text = "2";
-            else
-                TxtTile.Text += "2";
+            WriteNumber("2");
         }
 
         private void BtnThree_Click(object sender, EventArgs e)
         {
-            if (TxtTile.Text == "0")
-                TxtTile.Text = "3";
-            else
-                TxtTile.Text += "3";
+            WriteNumber("3");
         }
 
         private void BtnFour_Click(object sender, EventArgs e)
         {
-            if (TxtTile.Text == "0")
-                TxtTile.Text = "4";
-            else
-                TxtTile.Text += "4";
+            WriteNumber("4");
         }
 
         private void BtnFive_Click(object sender, EventArgs e)
         {
-            if (TxtTile.Text == "0")
-                TxtTile.Text = "5";
-            else
-                TxtTile.Text += "5";
+            WriteNumber("5");
         }
 
         private void BtnSix_Click(object sender, EventArgs e)
         {
-            if (TxtTile.Text == "0")
-                TxtTile.Text = "6";
-            else
-                TxtTile.Text += "6";
+            WriteNumber("6");
         }
 
         private void BtnSeven_Click(object sender, EventArgs e)
         {
-            if (TxtTile.Text == "0")
-                TxtTile.Text = "7";
-            else
-                TxtTile.Text += "7";
+            WriteNumber("7");
         }
 
         private void BtnEight_Click(object sender, EventArgs e)
         {
-            if (TxtTile.Text == "0")
-                TxtTile.Text = "8";
-            else
-                TxtTile.Text += "8";
+            WriteNumber("8");
         }
 
         private void BtnNine_Click(object sender, EventArgs e)
         {
-            if (TxtTile.Text == "0")
-                TxtTile.Text = "9";
-            else
-                TxtTile.Text += "9";
+            WriteNumber("9");
         }
 
         private void BtnZero_Click(object sender, EventArgs e)
         {
-            if (TxtTile.Text == "0")
-                TxtTile.Text = "0";
-            else
+            if (TxtTile.Text != "0")
                 TxtTile.Text += "0";
+        }
+        private void BtnPoint_Click(object sender, EventArgs e)
+        {
+                TxtTile.Text += ",";
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            FirstStep = Convert.ToDouble(TxtTile.Text);
-            TxtTile.Text = "0";
-            Operation = TOperation.add;
+            AddOperation('+');
+            Operation = TOperation.Add;
         }
 
         private void BtnSubtract_Click(object sender, EventArgs e)
         {
-            FirstStep = Convert.ToDouble(TxtTile.Text);
-            TxtTile.Text = "0";
-            Operation = TOperation.subtract;
+            AddOperation('-');
+            Operation = TOperation.Subtract;
         }
 
         private void BtnMultiply_Click(object sender, EventArgs e)
         {
-            FirstStep = Convert.ToDouble(TxtTile.Text);
-            TxtTile.Text ="0";
-            Operation = TOperation.multiply;
+            AddOperation('*');
+            Operation = TOperation.Multiply;
         }
 
         private void BtnDivide_Click(object sender, EventArgs e)
         {
-            FirstStep = Convert.ToDouble(TxtTile.Text);
-            TxtTile.Text = "0";
-            Operation = TOperation.divide;
+            AddOperation('/');
+            Operation = TOperation.Divide;
         }
 
         private void BtnEqual_Click(object sender, EventArgs e)
         {
-            SecondStep= Convert.ToDouble(TxtTile.Text);
-            if (Operation == TOperation.add)
+            SecondStep = Convert.ToDouble(TxtTile.Text);
+            switch (Operation)
             {
-                Result = (FirstStep + SecondStep);
-                TxtTile.Text = Convert.ToString(Result);
-                FirstStep = Result;
+                case TOperation.Add:
+                    Result = (FirstStep + SecondStep);
+                    EqualOperation();
+                    break;
+                case TOperation.Subtract:
+                    Result = (FirstStep - SecondStep);
+                    EqualOperation();
+                    break;
+                case TOperation.Multiply:
+                    Result = (FirstStep * SecondStep);
+                    EqualOperation();
+                    break;
+                case TOperation.Divide:
+                    if (SecondStep == 0)
+                        TxtTile.Text = "Cannot divide by zero";
+                    else
+                    {
+                        Result = (FirstStep / SecondStep);
+                        EqualOperation();
+                    }
+                    break;
+                default:
+                    break;
             }
-            else if (Operation == TOperation.subtract)
-            {
-                Result = (FirstStep - SecondStep);
-                TxtTile.Text = Convert.ToString(Result);
-                FirstStep = Result;
-            }
-            else if (Operation == TOperation.multiply) 
-            {
-                Result = (FirstStep * SecondStep);
-                TxtTile.Text = Convert.ToString(Result);
-                FirstStep = Result;
-            }
-            else if (Operation == TOperation.divide) 
-            {
-                if (SecondStep == 0)
-                {
-                    TxtTile.Text = "Sıfıra bölemeyiz";
-                }
-                else
-                {
-                    Result = (FirstStep / SecondStep);
-                    TxtTile.Text = Convert.ToString(Result);
-                    FirstStep = Result;
-                }
-            }
-
         }
         private void BtnClear_Click(object sender, EventArgs e)
         {
             TxtTile.Text = "0";
+            FirstStep = 0;
+            SecondStep = 0;
+        }
+
+        public void WriteNumber(string Number)
+        {
+            if (TxtTile.Text == "0")
+                TxtTile.Text = Number;
+            else
+                TxtTile.Text += Number;
+        }
+        public void AddOperation(char Operator)
+        {
+            FirstStep = Convert.ToDouble(TxtTile.Text);
+            TxtTile.Text = "0";
+            LblUp.Text = FirstStep.ToString() + Operator;
+        }
+        public void EqualOperation() 
+        {
+            TxtTile.Text = Convert.ToString(Result);
+            FirstStep = Result;
+            LblUp.Text += SecondStep.ToString();
         }
     }
 }

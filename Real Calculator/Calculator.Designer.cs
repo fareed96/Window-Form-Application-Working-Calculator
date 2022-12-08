@@ -45,17 +45,22 @@
             this.BtnZero = new System.Windows.Forms.Button();
             this.BtnEqual = new System.Windows.Forms.Button();
             this.BtnAdd = new System.Windows.Forms.Button();
+            this.BtnPoint = new System.Windows.Forms.Button();
+            this.LblUp = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TxtTile
             // 
             this.TxtTile.BackColor = System.Drawing.Color.LightCyan;
+            this.TxtTile.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtTile.Cursor = System.Windows.Forms.Cursors.No;
             this.TxtTile.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtTile.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.TxtTile.Location = new System.Drawing.Point(12, 25);
             this.TxtTile.Name = "TxtTile";
+            this.TxtTile.ReadOnly = true;
             this.TxtTile.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.TxtTile.Size = new System.Drawing.Size(302, 30);
+            this.TxtTile.Size = new System.Drawing.Size(302, 23);
             this.TxtTile.TabIndex = 0;
             this.TxtTile.Text = "0";
             // 
@@ -133,7 +138,7 @@
             // BtnMultiply
             // 
             this.BtnMultiply.Font = new System.Drawing.Font("Gill Sans MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnMultiply.Location = new System.Drawing.Point(243, 112);
+            this.BtnMultiply.Location = new System.Drawing.Point(243, 101);
             this.BtnMultiply.Name = "BtnMultiply";
             this.BtnMultiply.Size = new System.Drawing.Size(70, 30);
             this.BtnMultiply.TabIndex = 8;
@@ -174,7 +179,7 @@
             // BtnSubtract
             // 
             this.BtnSubtract.Font = new System.Drawing.Font("Gill Sans MT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSubtract.Location = new System.Drawing.Point(243, 152);
+            this.BtnSubtract.Location = new System.Drawing.Point(243, 132);
             this.BtnSubtract.Name = "BtnSubtract";
             this.BtnSubtract.Size = new System.Drawing.Size(70, 30);
             this.BtnSubtract.TabIndex = 12;
@@ -187,7 +192,7 @@
             // 
             this.BtnClear.BackColor = System.Drawing.Color.Orange;
             this.BtnClear.Font = new System.Drawing.Font("Gill Sans MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnClear.Location = new System.Drawing.Point(12, 193);
+            this.BtnClear.Location = new System.Drawing.Point(243, 194);
             this.BtnClear.Name = "BtnClear";
             this.BtnClear.Size = new System.Drawing.Size(70, 30);
             this.BtnClear.TabIndex = 13;
@@ -208,7 +213,7 @@
             // BtnEqual
             // 
             this.BtnEqual.Font = new System.Drawing.Font("Gill Sans MT", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEqual.Location = new System.Drawing.Point(166, 193);
+            this.BtnEqual.Location = new System.Drawing.Point(166, 192);
             this.BtnEqual.Name = "BtnEqual";
             this.BtnEqual.Size = new System.Drawing.Size(70, 30);
             this.BtnEqual.TabIndex = 15;
@@ -219,7 +224,7 @@
             // BtnAdd
             // 
             this.BtnAdd.Font = new System.Drawing.Font("Gill Sans MT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAdd.Location = new System.Drawing.Point(244, 193);
+            this.BtnAdd.Location = new System.Drawing.Point(243, 163);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(70, 30);
             this.BtnAdd.TabIndex = 16;
@@ -227,11 +232,35 @@
             this.BtnAdd.UseVisualStyleBackColor = true;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
+            // BtnPoint
+            // 
+            this.BtnPoint.Location = new System.Drawing.Point(12, 193);
+            this.BtnPoint.Name = "BtnPoint";
+            this.BtnPoint.Size = new System.Drawing.Size(70, 30);
+            this.BtnPoint.TabIndex = 17;
+            this.BtnPoint.Text = ",";
+            this.BtnPoint.UseVisualStyleBackColor = true;
+            this.BtnPoint.Click += new System.EventHandler(this.BtnPoint_Click);
+            // 
+            // LblUp
+            // 
+            this.LblUp.AutoSize = true;
+            this.LblUp.BackColor = System.Drawing.Color.LightCyan;
+            this.LblUp.Location = new System.Drawing.Point(12, 9);
+            this.LblUp.Name = "LblUp";
+            this.LblUp.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblUp.Size = new System.Drawing.Size(13, 13);
+            this.LblUp.TabIndex = 18;
+            this.LblUp.Text = "0";
+            this.LblUp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(326, 246);
+            this.Controls.Add(this.LblUp);
+            this.Controls.Add(this.BtnPoint);
             this.Controls.Add(this.BtnAdd);
             this.Controls.Add(this.BtnEqual);
             this.Controls.Add(this.BtnZero);
@@ -277,6 +306,8 @@
         private System.Windows.Forms.Button BtnZero;
         private System.Windows.Forms.Button BtnEqual;
         private System.Windows.Forms.Button BtnAdd;
+        private System.Windows.Forms.Button BtnPoint;
+        private System.Windows.Forms.Label LblUp;
     }
 }
 
